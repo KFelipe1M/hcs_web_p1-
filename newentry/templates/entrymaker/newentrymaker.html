@@ -1,0 +1,23 @@
+{% extends "encyclopedia/layout.html" %}
+    <head>
+        <title>New entry</title>
+    </head>
+    {% block body %}
+        <h1>Add page</h1>
+         {% csrf_token %}
+         {{ form.as_p }}
+         entry title
+         <form>
+         <input type="text">
+        </form>
+        
+        entry description 
+        <form>
+         <input type="text" style="width:40%;height:200px; padding-top:8px;text-align: start; box-sizing:border-box;">
+        </form>
+
+        <form>
+         <input type="submit" value="add entry">
+         <form action="" method="post"></form>
+        </form>
+    {% endblock %}
