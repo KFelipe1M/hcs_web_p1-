@@ -1,4 +1,5 @@
 from django.shortcuts import render
+import Markdown2
 from markdown2 import Markdown
 from . import util
 
