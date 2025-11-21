@@ -20,3 +20,11 @@ def newentrymaker(request):
     util.save_entry(title, content_md)
     
     return redirect("encyclopedia:index")
+
+def entry(request, title):
+    content = util.get_entry(title)
+    if content is None:
+        content = "Page not faund"
+    markdowner = Markdown()
+    content = markdowner.convert(content)
+    return render(request, "entrymaker/entry.html", {'content': content, 'title':title})
