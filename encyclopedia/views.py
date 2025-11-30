@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from markdown2 import Markdown
 from . import views
+from django.http import Http404
 from . import util
 from random import randint
 
@@ -35,3 +36,8 @@ def search(request):
    return render(request,"encyclopedia/entry.html", {
       "entries": util.search(q), "q":q
       })
+
+def random(rquest):
+   entries = util.list_entries()
+   entry = entries[randint(0, len(entries)-1)]
+   return redirect("encyclopedia:entry", entry)

@@ -6,4 +6,5 @@ app_name = "newentry"
 
 urlpatterns = [
     path("newentrymaker/", views.newentrymaker, name="newentrymaker"),
+    path("edit/<str:entry>/", views.edit, name="edit"),
 ]
