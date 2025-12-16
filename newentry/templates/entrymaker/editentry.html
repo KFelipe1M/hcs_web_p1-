@@ -4,15 +4,11 @@ Edit | {{ title }} | Encyclopedia
 {% endblock %}
 
 {% block body %}
+    <h1>{{ title }}</h1>
     <form method="post">
-        {% csrf_token %}
-
-        <label>Entry title</form><br><br>
-            <input type="text" name="title" value={{ title }} required><br><br>
-            <label> Entry description </label><br>
-            <textarea name="content" style="width: 500px; height: 200px;" required> {{ content }} </textarea><br><br>
-
-            <input type="submit" value="Save">
-
+        {%  csrf_token  %}
+        <label>Entry Description</label><br>
+        <textarea name="content" style="width: 500px; height: 200px;" required>{{ content }}</textarea>
+        <input type="submit" value="save">
     </form>
 {% endblock %}

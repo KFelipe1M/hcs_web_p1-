@@ -33,11 +33,15 @@ def search(request):
    q = request.GET.get('q').strip()
    if q in util.list_entries():
       return redirect("encyclopedia:entry", title=q)
+   page=util.get_entry(q)
+   if page is None:
+      return render(request,"encyclopedia/error.html",{
+      })
    return render(request,"encyclopedia/entry.html", {
       "entries": util.search(q), "q":q
       })
 
-def random(rquest):
+def random(reuest):
    entries = util.list_entries()
    entry = entries[randint(0, len(entries)-1)]
    return redirect("encyclopedia:entry", entry)
