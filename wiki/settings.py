@@ -20,7 +20,6 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'encyclopedia',
-    'newentry',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
