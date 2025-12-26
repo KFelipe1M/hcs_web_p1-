@@ -30,7 +30,7 @@ def entry(request, title):
     
     markdowner = Markdown()
     content = markdowner.convert(content)
-    return render(request, "entrymaker/entry.html", {'content': content, 'title':title})
+    return render(request, "encyclopedia/entry.html", {'content': content, 'title':title})
 
 def search(request):
    q = request.GET.get('q').strip()
@@ -51,12 +51,12 @@ def random(reuest):
 
 
 def index(request):
-    return render(request, "entrymaker/index.html")
+    return render(request, "encyclopedia.html")
 
 def newentrymaker(request):
 
     if request.method == "GET":
-        return render(request,"entrymaker/newentrymaker.html")
+        return render(request,"encyclopedia/entry.html")
         
     title = request.POST.get("title")
     content = request.POST.get("content")
@@ -69,7 +69,7 @@ def edit(request, entry):
 
     if request.method == "GET":
         content = util.get_entry(entry)
-        return render(request, "entrymaker/editentry.html", {
+        return render(request, "encyclopedia/editentry.html", {
         "title": entry,
         "content": content
         })
