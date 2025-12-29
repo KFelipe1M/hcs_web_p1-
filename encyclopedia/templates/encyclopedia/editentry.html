@@ -1,11 +1,13 @@
-{% extends "encyclopedia/layout.html" %}
+{# edit page function #} 
+{% extends "encyclopedia/layout.html" %} {#  #}
 {% block title %}
-Edit | {{ title }} | Encyclopedia
+Edit | {{ title }} | Encyclopedia {# edit bottom #}
 {% endblock %}
 
-{% block body %}
-    <h1>{{ title }}</h1>
-    <form method="post">
+{# edit function main page #}
+{% block body %} 
+    <h1>{{ title }}</h1>  
+    <form method="post"> 
         {%  csrf_token  %}
         <label>Entry Description</label><br>
         <textarea name="content" style="width: 500px; height: 200px;" required>{{ content }}</textarea>

@@ -1,12 +1,15 @@
+{# entry submit function #}
 {% extends "encyclopedia/layout.html" %}
 {% block body %}
-    <form method="POST">
+    <form method="POST"> {# submit function #}
         {% csrf_token %}
 
-        <label>Entry title</form><br><br>
+        {# title maker #}
+        <label>Entry title</form><br><br> 
             <input type="text" name="title" required><br><br>
 
-            <label> Entry description</label><br>
+            {# description maker #}
+            <label> Entry description</label><br> 
             <textarea name="content" style="width: 500px; height: 200px;" required></textarea><br><br>
 
             <input type="submit" value="Add entry">
