@@ -1,3 +1,4 @@
+# functions import #
 import os
 from django.shortcuts import render, redirect
 from markdown2 import Markdown
@@ -9,7 +10,7 @@ from . import util
 from random import randint
 
 
-def md_to_html(title):
+def md_to_html(title): # port .md formate to html #
     content = util.get_entry(title)
     markdowner = Markdown()
     if content == None:
@@ -17,22 +18,22 @@ def md_to_html(title):
     else:
      return markdowner.convert("**test**")
 
-def index(request):
+def index(request): #  #
     return render(request, "encyclopedia/index.html", {
         "entries": util.list_entries()
     })
 
-def entry(request, title):
+def entry(request, title): # entry visualize function #
     content = util.get_entry(title)
     if content is None:
         return HttpResponseNotFound(f"<h1>Page '{title}' not found</h1>")
     
     
-    markdowner = Markdown()
+    markdowner = Markdown() #  #
     content = markdowner.convert(content)
     return render(request, "encyclopedia/entry.html", {'content': content, 'title':title})
 
-def search(request):
+def search(request): # search function #
    q = request.GET.get('q').strip()
    if q in util.list_entries():
       return redirect("encyclopedia:entry", title=q)
@@ -44,13 +45,13 @@ def search(request):
       "entries": util.search(q), "q":q
       })
 
-def random(request):
+def random(request): # random page function #
    entries = util.list_entries()
    entry = entries[randint(0, len(entries)-1)]
    return redirect("encyclopedia:entry", entry)
 
 
-def newentrymaker(request):
+def newentrymaker(request): # entry make function #
 
     if request.method == "GET":
         return render(request,"encyclopedia/entry.html")
@@ -62,7 +63,7 @@ def newentrymaker(request):
     
     return redirect("encyclopedia:index")
 
-def edit(request, entry):
+def edit(request, entry): # entry edit function #
 
     if request.method == "GET":
         content = util.get_entry(entry)
