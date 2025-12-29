@@ -44,14 +44,11 @@ def search(request):
       "entries": util.search(q), "q":q
       })
 
-def random(reuest):
+def random(request):
    entries = util.list_entries()
    entry = entries[randint(0, len(entries)-1)]
    return redirect("encyclopedia:entry", entry)
 
-
-def index(request):
-    return render(request, "encyclopedia.html")
 
 def newentrymaker(request):
 
